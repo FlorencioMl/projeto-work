@@ -9,12 +9,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class GenericEntity {
+public abstract class GenericEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private UUID uuid;
 	@Column(nullable = false, length = 150)
 	private String name;
+	
 	public UUID getUuid() {
 		return uuid;
 	}
@@ -27,5 +28,5 @@ public class GenericEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 }

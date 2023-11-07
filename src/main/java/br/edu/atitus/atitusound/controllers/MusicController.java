@@ -1,34 +1,37 @@
 package br.edu.atitus.atitusound.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.beans.BeanUtils;
-
 import br.edu.atitus.atitusound.dtos.MusicDTO;
 import br.edu.atitus.atitusound.entities.ArtistEntity;
 import br.edu.atitus.atitusound.entities.MusicEntity;
 import br.edu.atitus.atitusound.services.GenericService;
+import br.edu.atitus.atitusound.services.MusicService;
 
 public class MusicController extends GenericController<MusicEntity, MusicDTO>{
 
+	private final MusicService musicService;
+	
+	public MusicController(MusicService musicService) {
+		super();
+		this.musicService = musicService;
+	}
+
 	@Override
 	public GenericService<MusicEntity> getService() {
-		// TODO Auto-generated method stub
-		return null;
+		return musicService;
 	}
 
 	@Override
 	protected MusicEntity convertDTO2Entity(MusicDTO dto) {
+		MusicEntity music = new MusicEntity();
+		music.setName(dto.getName());
+		music.setDuration(dto.getDuration());
+		music.setUrl(dto.getUrl());
+		
 		ArtistEntity artist = new ArtistEntity();
 		artist.setUuid(dto.getArtist().getUuid());
-		MusicEntity entidade = new MusicEntity();
-		BeanUtils.copyProperties(dto, entidade);
-		entidade.setArtist(artist);
-		return entidade;
+		
+		music.setArtist(artist);
+		return null;
 	}
 
 }
-
-
-

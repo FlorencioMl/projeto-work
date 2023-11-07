@@ -10,10 +10,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="tb_music")
+@Table(name = "tb_music")
 public class MusicEntity extends GenericEntity{
 	
-
 	private Duration duration;
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "artist_uuid")
@@ -33,7 +32,6 @@ public class MusicEntity extends GenericEntity{
 	public void setDuration(Duration duration) {
 		this.duration = duration;
 	}
-
 	public ArtistEntity getArtist() {
 		return artist;
 	}

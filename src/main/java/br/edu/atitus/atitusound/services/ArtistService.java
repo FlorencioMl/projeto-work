@@ -9,7 +9,6 @@ import org.springframework.data.domain.Pageable;
 
 import br.edu.atitus.atitusound.entities.ArtistEntity;
 
-public interface ArtistService extends GenericService<ArtistEntity>{
-	
+public interface ArtistService extends GenericService<ArtistEntity> {
 
 }
